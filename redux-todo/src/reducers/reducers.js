@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_COMPLETED } from '../actions/actions';
+import { ADD_TODO, TOGGLE_COMPLETED, REMOVE_COMPLETED } from '../actions/actions';
 
 const initialState = {
     todos: [
@@ -27,6 +27,10 @@ function rootReducer (state=initialState, action) {
             case TOGGLE_COMPLETED:
                 return {
                    todos: state.todos.map((todo, index) => action.payload === index ? {...todo, completed: !todo.completed } : todo)
+                }
+            case REMOVE_COMPLETED:
+                return {
+                    todos: state.todos.filter(todo => todo.completed === false)
                 }
             default:
                 return state

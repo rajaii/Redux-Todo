@@ -1,0 +1,44 @@
+.tFlex {
+    display: flex;
+    justify-content: center;
+    color: greenyellow;
+    font-size: 3rem;
+
+}
+.tButton {
+    width: 163px;
+    background-color: red;
+    font-size: 1rem;
+    color: white;
+}
+.doneTodo {
+    text-decoration: line-through;
+    text-decoration-color: red;
+    color: blue;
+    font-weight: bold;
+
+}
+
+.addButton {
+    background-color: green;
+    height: 55px;
+    font-size: 1rem;
+    color: white;
+    width: 241px;
+}
+.addInput {
+    font-size: 3rem;
+    width: 400px;
+}
+.buttonFlex {
+    display: flex;
+    justify-content: center;
+}
+.addButton:hover {
+    color: black;
+    background-color: blue
+}
+.tButton:hover {
+    color: black;
+    background-color: purple;
+}
