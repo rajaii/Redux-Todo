@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo, toggleCompleted, removeCompleted } from './actions/actions';
+import { addTodo, toggleCompleted, removeCompleted, editTodo } from './actions/actions';
 import Todo from './Todo';
 import './TodoList.css'
 
@@ -51,6 +51,9 @@ handleClear = () => {
     this.props.removeCompleted();
 }
 
+
+
+
     render() {
         
        
@@ -58,7 +61,7 @@ handleClear = () => {
         return (
             <div style={{backgroundColor: this.state.color}}>
                 <h1>Todo List (developed with React-Redux)</h1>
-                <div>{this.props.todos.map((t, index) => <Todo key={index} index={index} todo={t} completed={t.completed} toggle={this.handleToggleClick} value={t.value} />)}</div>
+                <div>{this.props.todos.map((t, index) => <Todo key={index} index={index} editTodo={this.props.editTodo} todo={t} completed={t.completed} toggle={this.handleToggleClick} value={t.value} todos={this.props.todos} />)}</div>
                 <form type='submit' onSubmit={this.handleSubmit}>
                     <input 
                     className='addInput'
@@ -84,7 +87,9 @@ const mapStateToProps = (state) => {
         
 }}
 
-export default connect(mapStateToProps,{ addTodo, toggleCompleted, removeCompleted })(TodoList);
+
+
+export default connect(mapStateToProps,{ addTodo, toggleCompleted, removeCompleted, editTodo })(TodoList);
 
 /*let colors = ['green', 'red', 'purple', 'yellow', 'pink','yellowgreen', 'violet', 'magenta', 'maroon', 'khaki', 'white', 'brown', 'rosybrown', 'teal', 'tomato', 'turquoise', 'indianred', 'indigo', 'orange', 'olive', 'pink', 'aqua']
         let colorToPick = () => {

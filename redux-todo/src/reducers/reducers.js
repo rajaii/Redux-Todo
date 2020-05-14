@@ -1,4 +1,4 @@
-import { ADD_TODO, TOGGLE_COMPLETED, REMOVE_COMPLETED } from '../actions/actions';
+import { ADD_TODO, TOGGLE_COMPLETED, REMOVE_COMPLETED, EDIT_TODO } from '../actions/actions';
 
 const initialState = {
     todos: [
@@ -12,6 +12,19 @@ const initialState = {
             }
     ]
 }
+//shallow copying in js
+// const ali = {
+//     isTall: false,
+//     canProgram: true,
+
+// } 
+
+// => const newDude = ali; //reference to ali
+// const newDude = {...ali}//reference to a new object starts with same values as ali
+// console.log(ali)
+// console.log(newDude)
+// newDude['isTall'] = true
+
 
 function rootReducer (state=initialState, action) {
     console.log(state);
@@ -32,6 +45,10 @@ function rootReducer (state=initialState, action) {
                 return {
                     todos: state.todos.filter(todo => todo.completed === false)
                 }
+            case EDIT_TODO:
+            return {
+                todos: state.todos.map((todo, index) => action.payload === index ? {value: action.payloadValue.value, ...todo} : todo)
+            }
             default:
                 return state
     }
